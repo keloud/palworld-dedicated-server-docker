@@ -9,17 +9,12 @@ ENV STEAMAPPID 2394010
 ENV STEAMAPP palworld
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 
-COPY etc/entry.sh "${HOMEDIR}/entry.sh"
+COPY etc/entry.sh ${HOMEDIR}
 
-RUN set -x \
-    && mkdir -p "${STEAMAPPDIR}" \
-    && chmod +x "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" \
-    && chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
-
-# Setup RCON Client
-RUN wget -O rcon-cli.tar.gz https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz
-RUN tar -xzvf ./rcon-cli.tar.gz -C ${HOMEDIR}/rcon-cli
-RUN rm ./rcon-cli.tar.gz
+RUN set -x
+RUN mkdir -p "${STEAMAPPDIR}"
+RUN chmod +x "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
+RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
 
 FROM build_stage AS bullseye-base
 

@@ -1,0 +1,18 @@
+services:
+  palworld:
+    build: ./bullseye
+    restart: unless-stopped
+    volumes: 
+      - ./palworld-volume/:/home/steam/palworld-dedicated/
+    ports:
+      - "8211:8211/udp"
+      - "27015:27015/udp"
+    environment:
+      - PORT=8211
+      - QUERY_PORT=27015
+      - RCON_PORT=25575
+      - MAXPLAYERS=10
+      - SERVER_PASSWORD="anzusound"
+      - ADMIN_PASSWORD="bmJsTQGVMAyFY12b"
+      - SERVER_NAME="Anzusound Dedicated Server"
+      - SERVER_DESCRIPTION="Private Server"

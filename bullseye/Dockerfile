@@ -18,7 +18,7 @@ RUN set -x \
 
 # Setup RCON Client
 RUN wget -O rcon-cli.tar.gz https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz
-RUN tar -xzvf ./rcon-cli.tar.gz -C ./rcon-cli
+RUN tar -xzvf ./rcon-cli.tar.gz -C ${HOMEDIR}/rcon-cli
 RUN rm ./rcon-cli.tar.gz
 
 FROM build_stage AS bullseye-base

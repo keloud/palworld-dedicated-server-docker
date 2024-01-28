@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p "${STEAMAPPDIR}" || true
+set -x
 
 bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
     +login anonymous \
@@ -7,15 +7,23 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
     +quit
 
 # Setup RCON Client
-sed -i -e "s/address\:\ \"\"/${RCON_PORT}/g" \
-    -e "s/password\:\ \"\"/${ADMIN_PASSWORD}/g" "${HOMEDIR}/rcon-cli/rcon.yaml"
+curl -OL https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz
+mkdir -v ${HOMEDIR}/rcon-cli
+tar -xzvf rcon-0.10.3-amd64_linux.tar.gz -C ${HOMEDIR}/rcon-cli --strip-components 1
+rm -v rcon-0.10.3-amd64_linux.tar.gz
+sed -i -e "s/address\:\ \"\"/address\: \"127.0.0.1\:${RCON_PORT}\"/g" \
+    -e "s/password\:\ \"\"/password\: ${ADMIN_PASSWORD}/g" "${HOMEDIR}/rcon-cli/rcon.yaml"
 
 if [ ! -s ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini ]; then
+    timeout --preserve-status 15s ${STEAMAPPDIR}/PalServer.sh 1> /dev/null
+    sleep 5
+
     cp ${STEAMAPPDIR}/DefaultPalWorldSettings.ini ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 fi
 
 sed -i -e "s/RCONEnabled=[a-zA-Z]*/RCONEnabled=TRUE/g" \
-    -e "s/RCONPort=[0-9]*/RCONPort=${RCON_PORT}/g" "${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
+    -e "s/RCONPort=[0-9]*/RCONPort=${RCON_PORT}/g" \
+    "${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
 
 bash "${STEAMAPPDIR}/PalServer.sh" \
     -port=${PORT} \
@@ -27,5 +35,3 @@ bash "${STEAMAPPDIR}/PalServer.sh" \
     -useperfthreads \
     -NoAsyncLoadingThread \
     -UseMultithreadForDS
-    
-    

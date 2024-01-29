@@ -5,7 +5,11 @@ services:
     restart: unless-stopped
     volumes:
       - gamedata:/home/steam/palworld-dedicated
-    network_mode: "host"
+    ports:
+      - "8211:8211/udp"
+      - "27015:27015/udp"
+    expose:
+      - "25575/tcp"
     environment:
       - PORT=8211
       - QUERY_PORT=27015

@@ -5,12 +5,12 @@
 ### Install Docker Compose
 ```shell
 sudo apt update
-sudo apt install docker-compose-v2
+sudo apt install -y docker-compose-v2
 ```
 
 ### Exec Docker Compose
 ```shell
-cd palworld-docker/
+cd palworld-dedicated-server-docker/
 sudo docker compose up -d
 ```
 

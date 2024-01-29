@@ -11,8 +11,8 @@ curl -OL https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.
 mkdir -v ${HOMEDIR}/rcon-cli
 tar -xzvf rcon-0.10.3-amd64_linux.tar.gz -C ${HOMEDIR}/rcon-cli --strip-components 1
 rm -v rcon-0.10.3-amd64_linux.tar.gz
-sed -i -e "s/address\:\ \"\"/address\: \"127.0.0.1\:${RCON_PORT}\"/g" \
-    -e "s/password\:\ \"\"/password\: ${ADMIN_PASSWORD}/g" "${HOMEDIR}/rcon-cli/rcon.yaml"
+sed -i -e "s/address: [a-zA-Z0-9:\"]*/address: "127.0.0.1:${RCON_PORT}"/g" \
+    -e "s/password: [a-zA-Z0-9:\"]*/password: ${ADMIN_PASSWORD}/g" "${HOMEDIR}/rcon-cli/rcon.yaml"
 
 if [ ! -s ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini ]; then
     # Generate PalWorldSettings.ini

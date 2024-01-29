@@ -35,9 +35,6 @@ WORKDIR ${HOMEDIR}
 CMD ["bash", "entry.sh"]
 
 # Expose ports
-# 8211/udp = game traffic
-# 27015/udp = query traffic
-# 25575/tcp = rcon traffic
-EXPOSE 8211/udp \
-    27015/udp \
-    25575/tcp
+EXPOSE ${PORT}/udp \
+    ${QUERY_PORT}/udp \
+    ${RCON_PORT}/tcp

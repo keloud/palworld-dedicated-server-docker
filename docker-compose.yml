@@ -1,5 +1,5 @@
 services:
-  palworld:
+  palworld-dedicated:
     build: ./bullseye
     restart: unless-stopped
     volumes:

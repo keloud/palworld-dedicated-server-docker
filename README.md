@@ -1,9 +1,19 @@
 # Palworld Dedicated Server Docker
 
-> [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)  
-> [Palworld](https://store.steampowered.com/app/1623730/Palworld/)  
-> [Palworld tech guide](https://tech.palworldgame.com/dedicated-server-guide)  
-> [gorcon/rcon-cli](https://github.com/gorcon/rcon-cli)  
+This Docker build script contains the dedicated server of the game.
+
+## Refer﻿
+ - [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)  
+ - [Palworld](https://store.steampowered.com/app/1623730/Palworld/)  
+ - [Palworld tech guide](https://tech.palworldgame.com/dedicated-server-guide)  
+ - [gorcon/rcon-cli](https://github.com/gorcon/rcon-cli)  
+
+## Use Listen Ports
+| Item  | Port  | Proto |
+| ----- | ----- | ----- |
+| Game  | 8211  | UDP   |
+| Query | 27015 | UDP   |
+| RCON  | 25575 | TCP   |
 
 ## How to use
 

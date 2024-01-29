@@ -15,6 +15,7 @@ sed -i -e "s/address\:\ \"\"/address\: \"127.0.0.1\:${RCON_PORT}\"/g" \
     -e "s/password\:\ \"\"/password\: ${ADMIN_PASSWORD}/g" "${HOMEDIR}/rcon-cli/rcon.yaml"
 
 if [ ! -s ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini ]; then
+    # Generate PalWorldSettings.ini
     timeout --preserve-status 15s ${STEAMAPPDIR}/PalServer.sh 1> /dev/null
     sleep 5
 
@@ -32,6 +33,7 @@ bash "${STEAMAPPDIR}/PalServer.sh" \
     -adminpassword=${ADMIN_PASSWORD} \
     -servername=${SERVER_NAME} \
     -serverdescription=${SERVER_DESCRIPTION} \
+    -players=${MAX_PLAYERS} \
     -useperfthreads \
     -NoAsyncLoadingThread \
     -UseMultithreadForDS

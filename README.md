@@ -8,7 +8,9 @@ This Docker build script contains the dedicated server of the game.
  - [Palworld tech guide](https://tech.palworldgame.com/dedicated-server-guide)  
  - [gorcon/rcon-cli](https://github.com/gorcon/rcon-cli)  
 
-## Use Listen Ports
+## Prerequisites
+
+### Required Ports
 | Item  | Port  | Proto |
 | ----- | ----- | ----- |
 | Game  | 8211  | UDP   |

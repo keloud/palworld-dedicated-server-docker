@@ -22,5 +22,5 @@ nano palworld-dedicated/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 
 ## RCON
 ```
-sudo docker exec -it -w /home/steam/rcon-cli {CONTAINER_ID} rcon
+sudo docker exec -it {CONTAINER_ID} bash -c "cd rcon-cli && ./rcon"
 ```

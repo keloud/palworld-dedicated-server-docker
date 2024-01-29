@@ -1,4 +1,9 @@
-# palworld-docker
+# Palworld Dedicated Server Docker
+
+> [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)  
+> [Palworld](https://store.steampowered.com/app/1623730/Palworld/)  
+> [Palworld tech guide](https://tech.palworldgame.com/dedicated-server-guide)  
+> [gorcon/rcon-cli](https://github.com/gorcon/rcon-cli)  
 
 ## How to use
 

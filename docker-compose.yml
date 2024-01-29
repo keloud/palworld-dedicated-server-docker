@@ -1,6 +1,7 @@
 services:
   palworld-dedicated:
     build: ./bullseye
+    container_name: palworld-dedicated
     restart: unless-stopped
     volumes:
       - gamedata:/home/steam/palworld-dedicated

@@ -35,7 +35,7 @@ sudo docker compose up -d
 
 ### PalWorldSettings.ini
 ```
-sudo docker exec -it {CONTAINER_ID} bash -c "nano palworld-dedicated/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
+sudo docker exec -it palworld-dedicated bash -c "nano palworld-dedicated/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
 ```
 See Optimize game balance: [https://tech.palworldgame.com/optimize-game-balance](https://tech.palworldgame.com/optimize-game-balance)
 
@@ -43,6 +43,6 @@ See Optimize game balance: [https://tech.palworldgame.com/optimize-game-balance]
 
 ### Launch RCON Client
 ```
-sudo docker exec -it {CONTAINER_ID} bash -c "cd rcon-cli && ./rcon"
+sudo docker exec -it palworld-dedicated bash -c "cd rcon-cli && ./rcon"
 ```
 See Server commands: [https://tech.palworldgame.com/server-commands](https://tech.palworldgame.com/server-commands)

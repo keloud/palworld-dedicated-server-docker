@@ -33,7 +33,7 @@ bash "${STEAMAPPDIR}/PalServer.sh" \
     -adminpassword=${ADMIN_PASSWORD} \
     -servername=${SERVER_NAME} \
     -serverdescription=${SERVER_DESCRIPTION} \
-    -players=${MAX_PLAYERS} \
+    -players=${MAXPLAYERS} \
     -useperfthreads \
     -NoAsyncLoadingThread \
     -UseMultithreadForDS

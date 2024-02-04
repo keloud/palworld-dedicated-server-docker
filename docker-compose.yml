@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     volumes:
       - gamedata:/home/steam/palworld-dedicated
-      - backupdata:/home/steam/palworld-dedicated-backupdata
+      - backupdata:/home/steam/palworld-dedicated-backup
     ports:
       - "8211:8211/udp"
       - "27015:27015/udp"

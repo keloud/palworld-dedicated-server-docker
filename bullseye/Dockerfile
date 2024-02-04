@@ -8,13 +8,15 @@ LABEL maintainer="12002158+keloud@users.noreply.github.com"
 ENV STEAMAPPID 2394010
 ENV STEAMAPP palworld
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+ENV BACKUPDIR "${HOMEDIR}/${STEAMAPP}-dedicated-backup"
 
 COPY etc/entry.sh ${HOMEDIR}
 
 RUN set -x
 RUN mkdir -p "${STEAMAPPDIR}"
+RUN mkdir -p "${BACKUPDIR}"
 RUN chmod +x "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
-RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
+RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
 
 FROM build_stage AS bullseye-base
 

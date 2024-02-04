@@ -11,6 +11,7 @@ ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV BACKUPDIR "${HOMEDIR}/${STEAMAPP}-dedicated-backup"
 
 COPY etc/entry.sh ${HOMEDIR}
+COPY etc/backup.sh ${HOMEDIR}
 
 RUN set -x
 RUN mkdir -p "${STEAMAPPDIR}"

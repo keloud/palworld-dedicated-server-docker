@@ -16,7 +16,7 @@ COPY etc/backup.sh ${HOMEDIR}
 RUN set -x
 RUN mkdir -p "${STEAMAPPDIR}"
 RUN mkdir -p "${BACKUPDIR}"
-RUN chmod +x "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}"
+RUN chmod +x "${HOMEDIR}/entry.sh" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}"
 RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
 
 FROM build_stage AS bullseye-base

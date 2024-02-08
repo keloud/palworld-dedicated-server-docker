@@ -21,4 +21,6 @@ if [ "${OLDDATE}" = "${NEWDATE}" ]; then
   exit 0
 fi
 
-# rsync -a
+tar -czvf ${BACKUPDIR}/${NEWDATE}.tar.gz -C ${STEAMAPPDIR}/Pal/ Saved
+
+cat {NEWDATE} > .latest_backup_date

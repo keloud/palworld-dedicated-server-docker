@@ -14,7 +14,7 @@ if [ ! -d ${HOMEDIR}/rcon-cli ]; then
     rm -v rcon-0.10.3-amd64_linux.tar.gz
 fi
 sed -i -e "s/address: \S* /address: "127.0.0.1:${RCON_PORT}" /g" \
-    -e "s/password: \S* /password: ${ADMIN_PASSWORD} /g" "${HOMEDIR}/rcon-cli/rcon.yaml"
+    -e "s/password: \S*/password: ${ADMIN_PASSWORD} /g" "${HOMEDIR}/rcon-cli/rcon.yaml"
 
 if [ ! -s ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini ]; then
     echo Generate PalWorldSettings.ini

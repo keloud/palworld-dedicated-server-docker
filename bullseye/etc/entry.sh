@@ -12,8 +12,10 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
     +quit
 
 # Rewrite RCON Config Files
-sed -i -e "s/address: .* /address: "127.0.0.1:${RCON_PORT}" /g" \
-    -e "s/password: .*/password: ${ADMIN_PASSWORD} /g" "${HOMEDIR}/rcon-cli/rcon.yaml"
+sed -i \
+    -e "s/address: .*/address: "127.0.0.1:${RCON_PORT}"/g" \
+    -e "s/password: .*/password: "${ADMIN_PASSWORD}" /g" \
+    "${HOMEDIR}/rcon-cli/rcon.yaml"
 
 # Check if PalWorldSettings.ini file exists
 if [ ! -s ${STEAMAPPDIR}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini ]; then

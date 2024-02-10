@@ -19,7 +19,7 @@ RUN mkdir -p "${STEAMAPPDIR}"
 RUN mkdir -p "${BACKUPDIR}"
 RUN chmod +x "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" "${HOMEDIR}/backup.sh"
 RUN "${HOMEDIR}/setup_rcon.sh"
-RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
+RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" "${HOMEDIR}/rcon-cli" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
 
 FROM build_stage AS bullseye-base
 

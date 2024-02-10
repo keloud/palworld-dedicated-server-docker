@@ -11,24 +11,26 @@ ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV BACKUPDIR "${HOMEDIR}/${STEAMAPP}-dedicated-backup"
 
 COPY etc/entry.sh ${HOMEDIR}
+COPY etc/setup_rcon.sh ${HOMEDIR}
 COPY etc/backup.sh ${HOMEDIR}
 
 RUN set -x
 RUN mkdir -p "${STEAMAPPDIR}"
 RUN mkdir -p "${BACKUPDIR}"
-RUN chmod +x "${HOMEDIR}/entry.sh" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}"
-RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
+RUN chmod +x "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}"
+RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" "${HOMEDIR}/backup.sh" "${STEAMAPPDIR}" "${BACKUPDIR}"
+RUN "${HOMEDIR}/setup_rcon.sh"
 
 FROM build_stage AS bullseye-base
 
-ENV PORT=8211 \
-    QUERY_PORT=27015 \
-    RCON_PORT=25575 \
-    MAXPLAYERS=10 \
-    SERVER_PASSWORD="" \
-    ADMIN_PASSWORD="changeme" \
-    SERVER_NAME="Palworld Dedicated Server" \
-    SERVER_DESCRIPTION=""
+ENV PORT=8211
+ENV QUERY_PORT=27015
+ENV RCON_PORT=25575
+ENV MAXPLAYERS=30
+ENV SERVER_PASSWORD_FILE=/run/secrets/server_password
+ENV ADMIN_PASSWORD_FILE=/run/secrets/admin_password
+ENV SERVER_NAME="Palworld Dedicated Server"
+ENV SERVER_DESCRIPTION=""
 
 # Switch to user
 USER ${USER}
@@ -38,6 +40,6 @@ WORKDIR ${HOMEDIR}
 CMD ["bash", "entry.sh"]
 
 # Expose ports
-EXPOSE ${PORT}/udp \
-    ${QUERY_PORT}/udp \
-    ${RCON_PORT}/tcp
+EXPOSE ${PORT}/udp
+EXPOSE ${QUERY_PORT}/udp
+EXPOSE ${RCON_PORT}/tcp

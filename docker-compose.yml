@@ -12,19 +12,18 @@ services:
     expose:
       - "25575/tcp"
     environment:
-      - PORT=8211
-      - QUERY_PORT=27015
-      - RCON_PORT=25575
       - MAXPLAYERS=10
+      - SERVER_PASSWORD_FILE=/run/secrets/server_password
+      - ADMIN_PASSWORD_FILE=/run/secrets/admin_password
       - SERVER_NAME="Private Dedicated Server"
       - SERVER_DESCRIPTION="Private Server"
+
+secrets:
+  server_password:
+    file: ./server_password.txt
+  admin_password:
+    file: ./admin_password.txt
 
 volumes:
   gamedata:
   backupdata:
-
-secrets:
-  server_password:
-    file: ./server_password
-  admin_password:
-    file: ./admin_password

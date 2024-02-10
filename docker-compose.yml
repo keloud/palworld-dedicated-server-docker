@@ -15,8 +15,16 @@ services:
       - MAXPLAYERS=10
       - SERVER_PASSWORD_FILE=/run/secrets/server_password
       - ADMIN_PASSWORD_FILE=/run/secrets/admin_password
-      - SERVER_NAME="Private Dedicated Server"
-      - SERVER_DESCRIPTION="Private Server"
+      - SERVER_NAME="Palworld Dedicated Server"
+      - SERVER_DESCRIPTION="Dedicated Server"
+
+networks:
+   default:
+     enable_ipv6: true
+     ipam:
+       config:
+         - subnet: 172.18.0.0/16
+         - subnet: fd3b:7145:299:0:172:18::/16
 
 secrets:
   server_password:

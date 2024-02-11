@@ -9,6 +9,7 @@ ENV STEAMAPPID 2394010
 ENV STEAMAPP palworld
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV BACKUPDIR "${HOMEDIR}/${STEAMAPP}-dedicated-backup"
+ENV RCONDIR "${HOMEDIR}/rcon-cli"
 
 COPY etc/entry.sh ${HOMEDIR}
 COPY etc/setup_rcon.sh ${HOMEDIR}

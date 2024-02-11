@@ -6,6 +6,11 @@ if [ ! -d ${BACKUPDIR} ]; then
   mkdir -v ${BACKUPDIR}
 fi
 
+if [ ! -d ${RCONDIR} ]; then
+  echo ${RCONDIR} does not exits
+  exit 1
+fi
+
 if [ -f ${BACKUPDIR}/.latest_backup_date ]; then
   OLDDATE=$(cat ${BACKUPDIR}/.latest_backup_date)
 fi

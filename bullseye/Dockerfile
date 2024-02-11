@@ -24,14 +24,14 @@ RUN chown -R "${USER}:${USER}" "${HOMEDIR}/entry.sh" "${HOMEDIR}/setup_rcon.sh" 
 
 FROM build_stage AS bullseye-base
 
-ENV PORT=8211
-ENV QUERY_PORT=27015
-ENV RCON_PORT=25575
-ENV MAXPLAYERS=30
-ENV SERVER_PASSWORD_FILE=/run/secrets/server_password
-ENV ADMIN_PASSWORD_FILE=/run/secrets/admin_password
-ENV SERVER_NAME="Palworld Dedicated Server"
-ENV SERVER_DESCRIPTION=""
+ENV PORT 8211
+ENV QUERY_PORT 27015
+ENV RCON_PORT 25575
+ENV MAXPLAYERS 30
+ENV SERVER_PASSWORD_FILE /run/secrets/server_password
+ENV ADMIN_PASSWORD_FILE /run/secrets/admin_password
+ENV SERVER_NAME "Palworld Dedicated Server"
+ENV SERVER_DESCRIPTION ""
 
 # Switch to user
 USER ${USER}

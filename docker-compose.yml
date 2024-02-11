@@ -3,6 +3,7 @@ services:
     build: ./bullseye
     container_name: palworld-dedicated
     restart: unless-stopped
+    stop_grace_period: 30s
     volumes:
       - gamedata:/home/steam/palworld-dedicated
       - backupdata:/home/steam/palworld-dedicated-backup

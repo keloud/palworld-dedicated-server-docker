@@ -3,7 +3,7 @@ set -x
 
 if [ ! -d ${BACKUPDIR} ]; then
   echo ${BACKUPDIR} does not exits
-  return 1
+  mkdir -v ${BACKUPDIR}
 fi
 
 if [ -f ${BACKUPDIR}/.latest_backup_date ]; then

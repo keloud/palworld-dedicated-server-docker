@@ -1,19 +1,21 @@
 services:
   game:
     build: ./bullseye
-    container_name: palworld-dedicated
     restart: unless-stopped
     stop_grace_period: 30s
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
     volumes:
       - gamedata:/home/steam/palworld-dedicated
       - backupdata:/home/steam/palworld-dedicated-backup
     ports:
-      - "127.0.0.1:8211:8211/udp"
-      - "127.0.0.1:27015:27015/udp"
-      - "[::1]:8211:8211/udp"
-      - "[::1]:27015:27015/udp"
+      - "8211:8211/udp"
+      - "27015:27015/udp"
     expose:
       - "25575/tcp"
+    secrets:
+      - server_password
+      - admin_password
     environment:
       - MAXPLAYERS=10
       - SERVER_PASSWORD_FILE=/run/secrets/server_password

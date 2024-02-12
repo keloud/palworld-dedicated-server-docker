@@ -32,4 +32,4 @@ fi
 
 tar -czvf ${BACKUPDIR}/${NEWDATE}.tar.gz -C ${STEAMAPPDIR}/Pal/ Saved
 
-cat ${NEWDATE} > ${BACKUPDIR}/.latest_backup_date
+echo ${NEWDATE} > ${BACKUPDIR}/.latest_backup_date

@@ -8,8 +8,10 @@ services:
       - gamedata:/home/steam/palworld-dedicated
       - backupdata:/home/steam/palworld-dedicated-backup
     ports:
-      - "8211:8211/udp"
-      - "27015:27015/udp"
+      - "127.0.0.1:8211:8211/udp"
+      - "127.0.0.1:27015:27015/udp"
+      - "[::1]:8211:8211/udp"
+      - "[::1]:27015:27015/udp"
     expose:
       - "25575/tcp"
     environment:
@@ -18,14 +20,6 @@ services:
       - ADMIN_PASSWORD_FILE=/run/secrets/admin_password
       - SERVER_NAME="Palworld Dedicated Server"
       - SERVER_DESCRIPTION="Dedicated Server"
-
-networks:
-   default:
-     enable_ipv6: true
-     ipam:
-       config:
-         - subnet: 172.18.0.0/16
-         - subnet: fd3b:7145:299:0:172:18::/16
 
 secrets:
   server_password:

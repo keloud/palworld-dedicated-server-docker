@@ -1,9 +1,10 @@
 #!/bin/bash
-set -x
 
 # Get secrets
 SERVER_PASSWORD=$(cat ${SERVER_PASSWORD_FILE})
 ADMIN_PASSWORD=$(cat ${ADMIN_PASSWORD_FILE})
+
+set -x
 
 # Download Updates
 bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \

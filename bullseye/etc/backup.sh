@@ -17,6 +17,8 @@ ${RCONDIR}/rcon -c "${RCONDIR}/rcon.yaml" save
 # Get latest backup date
 if [ -f ${BACKUPDIR}/.latest_backup_date ]; then
   OLDDATE=$(cat ${BACKUPDIR}/.latest_backup_date)
+else
+  touch ${BACKUPDIR}/.latest_backup_date
 fi
 OLDDATE=${OLDDATE:="NOT_SET"}
 
@@ -30,4 +32,4 @@ fi
 
 tar -czvf ${BACKUPDIR}/${NEWDATE}.tar.gz -C ${STEAMAPPDIR}/Pal/ Saved
 
-cat {NEWDATE} > ${BACKUPDIR}/.latest_backup_date
+cat ${NEWDATE} > ${BACKUPDIR}/.latest_backup_date
